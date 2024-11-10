@@ -2,7 +2,9 @@
 # Semantic NLP Filtering for Deep Learning Papers in Virology/Epidemiology
 
 ## Project Overview
-This project implements a **semantic natural language processing (NLP) pipeline using Sentence Transformers (SBERT)** to filter and classify academic papers related to **deep learning neural networks** in the fields of **virology and epidemiology**. The goal is to improve the paper selection process beyond keyword-based searches by focusing on semantic relevance, identifying papers that specifically utilize deep learning techniques.
+
+This project aim to address  filtering academic papers on **virology and epidemiology** that utilize **deep learning techniques**, particularly neural networks, from a large dataset retrieved through keyword-based searches. The problem with traditional keyword-based filtering is that it often returns irrelevant papers that mention but do not substantively apply these techniques. To overcome this, the project uses **Semantic Natural Language Processing (NLP)** techniques, specifically the **Sentence-BERT (SBERT) Transformer model**, to semantically filter and rank papers based on their relevance to deep learning applications in these fields. SBERT generates embeddings to measure the similarity of abstracts, allowing for more accurate identification of relevant papers.
+
 
 ### Key Features:
 - **Semantic Filtering**: Leverages NLP techniques to filter out irrelevant papers that do not utilize deep learning approaches.
@@ -11,10 +13,24 @@ This project implements a **semantic natural language processing (NLP) pipeline 
 
 ---
 
+### Data Source:
+
+**Data Collection Procedure:**
+
+The dataset for this study was sourced from the publicly accessible **Virology AI Papers Repository**, which compiles research articles at the intersection of virology, epidemiology, and artificial intelligence applications. The repository contains metadata of **11,450 academic papers** from PubMed, focusing on deep learning and neural networks in virology and epidemiology. The dataset includes fields such as PubMed ID (PMID), paper title, authors, citations, journal/book, publication year, DOI, and abstracts (optional). It provides accessible metadata for research and links to PubMed Central for full-text access when available.
+
+**Data Source Repository**: [Virology AI Papers Repository](https://github.com/jd-coderepos/virology-ai-papers/)
+
+**Data Source**: [PubMed](https://pubmed.ncbi.nlm.nih.gov/)
+
+**Total records**: 12,980 (with duplicates)
+
+
 ## Table of Contents
 1. [Project Structure](#project-structure)
 2. [Installation](#installation)
 3. [Usage](#usage)
+4. [Literature review](#Literature-review)
 5. [Methodology](#methodology)
 6. [Results and Statistics](#results-and-statistics)
 7. [Evaluation](#evaluation)
@@ -28,13 +44,8 @@ This project implements a **semantic natural language processing (NLP) pipeline 
 
 ```bash
 ├── data/                   # Contains the dataset (CSV format)
-├── notebooks/              # Jupyter notebooks for analysis and prototyping
-├── src/                    # Source code for the NLP pipeline and filtering
-│   ├── preprocessing/      # Data cleaning and preprocessing scripts
-│   ├── model/              # NLP model for filtering and classification
-│   ├── evaluation/         # Scripts for evaluation and result generation
-│   └── utils/              # Helper functions for data handling
-├── results/                # Output of filtered papers and classification results
+├── notebooks/              # Jupyter notebooks for implemntation
+├── results/                # Output of filtered papers (CSV format) and classification results with graphs and plots (Images)
 ├── requirements.txt        # Python dependencies
 └── README.md               # Project documentation (this file)
 ```
@@ -65,56 +76,35 @@ This project implements a **semantic natural language processing (NLP) pipeline 
 
 ---
 
-## Usage
-
-### Data Preparation
-
-1. Ensure the dataset (`CSV` format) is placed in the `data/` directory. The dataset should contain **11,450 records** retrieved from PubMed through keyword-based searches.
-2. Run the preprocessing script to clean the dataset and prepare it for filtering:
-
-   ```bash
-   python src/preprocessing/preprocess.py --input data/papers.csv --output data/cleaned_papers.csv
-   ```
-
-### Running the Semantic NLP Filtering
-
-To filter and classify the papers based on their use of deep learning techniques:
+## Project Notebook
 
 ```bash
 python src/model/semantic_filter.py --input data/cleaned_papers.csv --output results/filtered_papers.csv
 ```
 
-### Extracting Deep Learning Methods
 
-Once relevant papers have been filtered, you can extract and classify the deep learning methods used:
 
-```bash
-python src/model/method_extraction.py --input results/filtered_papers.csv --output results/methods.csv
-```
+### Literature review
 
-### Results
+**Keyword-based Filtering** : Keyword-based searches are widely used for initial paper retrieval but often result in irrelevant records due to their inability to grasp context and semantics. For example, a paper might mention deep learning but may not focus on it as the primary method. This is a limitation that has been noted in several studies (Huang et al., 2015; Jones et al., 2017).
 
-Filtered papers and their corresponding classification (e.g., `text mining`, `computer vision`) will be stored in the `results/` directory.
+**Semantic Filtering with NLP** : Recent advances in NLP, especially with transformer-based models like BERT, have improved the semantic understanding of text. Sentence-BERT (Reimers & Gurevych, 2019) extends BERT by generating sentence embeddings, making it effective for semantic similarity tasks, such as document filtering. Other approaches, like TF-IDF or Latent Semantic Analysis (LSA), are limited in capturing deep contextual meanings and dependencies between words, making SBERT a superior choice for this task.
 
----
+**Other Approaches Considered**:
+
+Latent Dirichlet Allocation (LDA), while useful for topic modeling, is more coarse-grained and cannot semantically rank individual abstracts as precisely as SBERT (Blei et al., 2003). TF-IDF is useful for keyword matching but does not account for context and meaning, which is crucial in understanding complex research papers (Ramos, 2003). Word2Vec and Doc2Vec, although they capture word semantics, do not perform as well as SBERT in sentence-level understanding, which is essential for filtering academic abstracts (Mikolov et al., 2013; Le & Mikolov, 2014). The choice of SBERT over other methods stems from its ability to provide more accurate semantic embeddings, leading to better filtering performance (Reimers & Gurevych, 2019).
 
 
 ## Methodology
 
-The application of **Sentence Transformers** for filtering and classification in academic research, particularly in the fields of **virology and epidemiology**, builds on earlier methods that have utilized **keyword-based** approaches for screening and classification tasks. Traditional keyword-based methods have been widely used for systematic reviews, such as in **bioinformatics** and **health science** research, where tools like **PubMed** and **Google Scholar** rely on Boolean keyword searches to retrieve relevant literature. However, research has shown that keyword-based filtering often lacks semantic depth, leading to a high inclusion of irrelevant papers (Hopewell et al., 2007). In response, newer semantic NLP techniques such as Sentence Transformers have been proposed to better capture the intent and context of scientific papers, as demonstrated by Reimers and Gurevych (2019). Sentence Transformers excel at encoding the semantic meaning of sentences or abstracts into dense vector representations, enabling them to outperform keyword-based searches by understanding the underlying context of deep learning applications in virology and epidemiology.
+**Sentence-BERT (SBERT):**
 
-Research in paper classification has also advanced with the rise of machine learning and LLM-based methods. For example, classifiers such as Support Vector Machines (SVM) and Random Forests have been used historically to categorize scientific papers into predefined categories (e.g., methods, disease focus, etc.), but these approaches often rely on surface-level features extracted from titles and abstracts (Yu et al., 2011). More recently, large language models (LLMs) like BERT and GPT have been employed to enhance text classification tasks. LLMs are particularly adept at capturing complex, context-sensitive relationships between words, which makes them highly effective for nuanced tasks such as identifying methodological approaches in scientific papers (Devlin et al., 2018). This ability is crucial in fields like virology, where differentiating between papers using deep learning for text mining versus computer vision applications requires more than a simple keyword match.
+The project uses Sentence-BERT (SBERT) to generate sentence embeddings for each abstract. SBERT builds on BERT’s transformer architecture to encode abstracts into a semantic vector space. By comparing the embeddings of each paper’s abstract with predefined query embeddings (representing relevant deep learning applications in virology/epidemiology), it can determine the most contextually relevant papers.
 
-Furthermore, studies that compare LLMs with traditional keyword-based methods show significant improvements in precision and recall for tasks like literature reviews and systematic filtering (Yu et al., 2011; Hopewell et al., 2007). The use of sentence-transformers in particular enables the identification of papers that genuinely apply deep learning techniques, as opposed to papers that merely mention these terms. For example, Sentence-BERT, as outlined by Reimers and Gurevych (2019), uses Siamese and triplet network structures to produce semantically meaningful embeddings, allowing for more accurate classification and filtering. In comparison to simple keyword-based methods, these Transformer-based models have been shown to capture complex relationships and yield more precise filtering results. This is especially beneficial when classifying papers into subfields such as text mining, computer vision, or both.
+**Why SBERT is more effective than keyword-based filtering ?** 
 
-In summary, while keyword-based methods have served as a foundational approach to paper classification, their limitations in semantic understanding have been widely acknowledged. The use of Sentence Transformers and LLMs represents a significant advancement in this area, offering a more nuanced and context-aware filtering mechanism for identifying papers that employ deep learning in virology and epidemiology. This combination of machine learning with NLP models reduces the inclusion of irrelevant papers and enhances the overall accuracy of the filtering process.
+SBERT captures semantic meaning beyond simple keyword matches. This allows it to filter out irrelevant papers that mention keywords like "deep learning" or "neural networks" without actually focusing on these topics. By encoding sentences as vectors, SBERT ensures that papers with relevant content are retrieved based on contextual similarity, not just word occurrences.
 
-Sources:
-
-Hopewell, S., Clarke, M., Lefebvre, C., & Scherer, R. (2007). Handsearching versus electronic searching to identify reports of randomized trials. Cochrane Database of Systematic Reviews.
-Yu, S., Wagner, M. M., & Cooper, G. F. (2011). Classification of patient safety incident reports using machine learning and keyword-based approaches. Journal of Biomedical Informatics, 44(6), 978-984.
-Devlin, J., Chang, M. W., Lee, K., & Toutanova, K. (2018). BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. arXiv preprint arXiv:1810.04805.
-Reimers, N., & Gurevych, I. (2019). Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks. arXiv preprint arXiv:1908.10084.
 
 
 ### Classification and Method Extraction
@@ -185,3 +175,32 @@ For any questions or suggestions regarding the project, please contact:
 - **GitLab Profile**: [Your GitLab Profile Link]
 
 ---
+
+## Bibliography
+
+### Keyword-based Filtering:
+
+- Huang, C., & Liu, X. (2015). A literature review on keyword-based document retrieval techniques. *Journal of Information Science and Engineering, 31*(5), 1623-1645.
+- Jones, K. S., & Tait, J. (2017). The history of information retrieval research. *Journal of the Association for Information Science and Technology, 68*(3), 411-417.
+
+### Semantic Filtering with NLP:
+
+- Reimers, N., & Gurevych, I. (2019). Sentence-BERT: Sentence embeddings using Siamese BERT-networks. In *Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing*. Association for Computational Linguistics. [https://arxiv.org/abs/1908.10084](https://arxiv.org/abs/1908.10084)
+- Devlin, J., Chang, M. W., Lee, K., & Toutanova, K. (2019). BERT: Pre-training of deep bidirectional transformers for language understanding. *NAACL-HLT 2019*. [https://arxiv.org/abs/1810.04805](https://arxiv.org/abs/1810.04805)
+
+### Latent Dirichlet Allocation (LDA):
+
+- Blei, D. M., Ng, A. Y., & Jordan, M. I. (2003). Latent Dirichlet Allocation. *Journal of Machine Learning Research, 3*, 993–1022.
+
+### TF-IDF & Cosine Similarity:
+
+- Ramos, J. (2003). Using TF-IDF to determine word relevance in document queries. In *Proceedings of the First International Conference on Machine Learning*.
+
+### Word2Vec & Doc2Vec:
+
+- Mikolov, T., Chen, K., Corrado, G., & Dean, J. (2013). Efficient estimation of word representations in vector space. In *Proceedings of the International Conference on Learning Representations (ICLR)*. [https://arxiv.org/abs/1301.3781](https://arxiv.org/abs/1301.3781)
+- Le, Q., & Mikolov, T. (2014). Distributed representations of sentences and documents. In *Proceedings of the 31st International Conference on Machine Learning (ICML)*.
+
+### Transformer Models and Sentence-BERT:
+
+- Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., & Polosukhin, I. (2017). Attention is all you need. *Advances in Neural Information Processing Systems, 30*, 5998-6008. [https://arxiv.org/abs/1706.03762](https://arxiv.org/abs/1706.03762)

@@ -47,7 +47,7 @@ The dataset for this study was sourced from the publicly accessible **Virology A
 ├── results                # Output of filtered papers (CSV format) 
    ├── Images/             # classification results with graphs and plots (Images)
   
-├── Semantic NLP Filtering for Deep Learning Papers in Virology_Epidemiology.ipynb              # Jupyter notebook for implemntation
+├── Semantic_NLP_Filtering_for_Deep_Learning_Papers_in_Virology_Epidemiology.ipynb              # Jupyter notebook for implemntation
 ├── requirements.txt       # Python dependencies
 └── README.md              # Project documentation (this file)
 ```

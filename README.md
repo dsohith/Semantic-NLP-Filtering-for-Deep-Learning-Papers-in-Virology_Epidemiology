@@ -177,6 +177,10 @@ The use of cosine similarity for identifying the deep learning method was partic
 - Lemmatize words to base form
 - Remove stopwords
 
+![Alt Text](.results/Images/Overview_of_abstracts.png)
+
+
+
   
 
 ### Methods Used:

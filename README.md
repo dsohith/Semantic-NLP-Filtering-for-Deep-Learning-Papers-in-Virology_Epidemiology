@@ -300,10 +300,10 @@ The comparison between the SBERT-based classification and the keyword-based sear
 | computational linguistics            |  2    |
             
 
-**Top 10 methods used in papers belongs to Virology/Epidemiology**
+**Top 10 methods used in  relevant Virology/Epidemiology papers**
 
 
-![Alt Text](results/Images/Top_10_methods_used_in_papers.png).
+![Alt Text](results/Images/Top_10_methods_used_in_papers.png)
 
 ---
 

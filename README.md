@@ -303,7 +303,7 @@ The comparison between the SBERT-based classification and the keyword-based sear
 **Top 10 methods used in papers belongs to Virology/Epidemiology**
 
 
-![Alt Text](results/Images/Classification_based_on_keyword_based_search.png).
+![Alt Text](results/Images/Top_10_methods_used_in_papers.png).
 
 ---
 

@@ -187,8 +187,8 @@ The use of cosine similarity for identifying the deep learning method was partic
 
 ![Alt Text](results/Images/Distribution_of_similarity_percentage.png)
 
-- Total papers found: 11237
-- Total relevant papers similarity with deep learning approaches: 11040
+- Total papers with Abstract: 11237
+- Total relevant papers similarity with deep learning keywords: 11040
 
  **Comparision with key word based search**
 
@@ -230,12 +230,13 @@ The comparison between the SBERT-based similarity approach and the keyword-based
 | both             | 5     |
 
 
+![Alt Text](results/Images/Classification_based_on_keyword_based_search.png).
+
 The comparison between the SBERT-based classification and the keyword-based search classification reveals notable differences in how each method categorizes research papers. The SBERT model identifies a more diverse range of approaches, with a significant number of papers (3,751) categorized as "Other," reflecting its ability to capture a wide variety of methods beyond predefined categories such as text mining and computer vision. This is followed by a substantial number of papers classified under text mining (3,085), both text mining and computer vision (2,502), and computer vision (1,702), highlighting the model's capacity to identify multimodal approaches and capture semantic nuances. In contrast, the keyword-based search produces a larger proportion of papers classified as Other (9,300), indicating that the method's reliance on specific keywords leads to a loss of papers discussing relevant methodologies using alternative terminology. It also identifies fewer papers under text mining (1,485) and computer vision (447), suggesting that the search fails to account for variations in terminology or the broader scope of deep learning methods. Furthermore, the small number of papers classified as using both methods (only 5) emphasizes the limitations of keyword-based searches in recognizing multimodal approaches. Overall, the SBERT model provides a more comprehensive and semantically aware classification, while the keyword-based approach tends to miss relevant papers due to its reliance on exact keyword matches.
 
 
 ### Task 3 Results: Method used for each relevant paper.
 
-**Classification based on SBERT model**
 
 - **Count of papers belongs to specific methods.**
 
@@ -276,20 +277,34 @@ The comparison between the SBERT-based classification and the keyword-based sear
 | language processing                  | 42    |
 | diffusion-based generative model     | 34    |
 | computational semantics              | 33    |
-| generative models                   
+| generative models                    | 29    |
+| self-attention models                | 26    |
+| large language model                 | 24    |
+| attention-based neural networks      | 19    |
+| diffusion model                      | 18    |
+| transformer                          | 13    |
+| LLM                                  | 13    |
+| transformer networks                 | 11    |
+| transformer-based model              | 10    |
+| generative diffusion model           |  7    |
+| generative language model            |  6    |
+| transformer architecture             |  6    |
+| multilayer perceptron                |  5    |
+| GRNN                                 |  3    |
+| computational linguistics            |  2    |
+            
+
+**Top 10 methods used in papers belongs to Virology/Epidemiology
 
 
+![Alt Text](results/Images/Classification_based_on_keyword_based_search.png).
 
 ---
 
-## Evaluation
 
-### Criteria:
-1. **Clarity of README**: This file serves as a comprehensive introduction to the project, explaining the purpose, usage, and methodology clearly.
-2. **Simplicity and Code Cleanliness**: The code is designed to be simple and efficient, avoiding the use of complex large language models (LLMs). The pipeline can be run on personal computers or cloud platforms like Google Colab with ease.
+## Conclusion
 
-- **Efficiency**: The semantic NLP filtering process is streamlined to minimize the manual effort needed to sift through large collections of papers, making it easier to identify relevant studies.
-- **Lightweight Models**: The NLP models used are computationally lightweight, focusing on simplicity and speed.
+This project successfully streamlined the early stages of article collection for review by employing Semantic NLP filtering with the Sentence-BERT (SBERT) model, effectively minimizing the need for manual scanning and filtering of numerous articles. The SBERT-based approach significantly outperformed traditional keyword-based searches by capturing semantic meaning and context, leading to more accurate identification and categorization of papers focused on deep learning applications in virology and epidemiology. The project not only filtered relevant papers but also classified them into key methodological categories such as text mining, computer vision, and both, while accurately extracting the specific deep learning techniques used. This approach provides an efficient and powerful tool for researchers to navigate large datasets with precision and reduced manual effort.
 
 ---
 
@@ -316,9 +331,9 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 ## Contact Information
 
 For any questions or suggestions regarding the project, please contact:
-- **Project Lead**: [Your Name]
-- **Email**: [Your Email Address]
-- **GitLab Profile**: [Your GitLab Profile Link]
+- **Project Lead**: Sohith Dhavaleswarapu
+- **Email**: sohith.dhavaleswarapu@gmail.com
+- **GitLab Profile**: https://github.com/dsohith
 
 ---
 

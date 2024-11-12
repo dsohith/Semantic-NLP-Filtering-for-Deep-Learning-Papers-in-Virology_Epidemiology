@@ -177,14 +177,108 @@ The use of cosine similarity for identifying the deep learning method was partic
 - Lemmatize words to base form
 - Remove stopwords
 
-![Alt Text](.results/Images/Overview_of_abstracts.png)
+![Alt Text](results/Images/Overview_of_abstracts.png)
 
+### Task 1 Results: Filtering papers that do not meet the criteria of utilizing deep learning approaches
 
+**Filtering using SBERT model**
 
+- **Distribution of similarity percentage**
+
+![Alt Text](results/Images/Distribution_of_similarity_percentage.png)
+
+- Total papers found: 11237
+- Total relevant papers similarity with deep learning approaches: 11040
+
+ **Comparision with key word based search**
+
+| Keyword Match Count | Count |
+|---------------------|-------|
+| 0                   | 4313  |
+| 1                   | 3736  |
+| 2                   | 1884  |
+| 3                   | 933   |
+| 4                   | 260   |
+| 5                   | 66    |
+| 6                   | 31    |
+| 7                   | 10    |
+| 8                   | 4     |
   
 
-### Methods Used:
-- Example methods extracted: **CNN**, **RNN**, **LSTM**, **Transformer**
+The comparison between the SBERT-based similarity approach and the keyword-based search for identifying relevant papers reveals key differences in effectiveness. The SBERT-based method identified 11,040 papers as relevant, demonstrating its ability to capture papers discussing deep learning in a broader, more nuanced context, even if the exact deep learning keywords were not present. This approach leverages semantic embeddings to compare the meaning of the abstracts to predefined deep learning-related keywords, ensuring a more comprehensive identification process. In contrast, the keyword-based search identified papers based solely on the presence of specific deep learning keywords. The results show a steep drop-off in the number of papers as the number of matching keywords decreases, with 4,313 papers having no keyword matches at all. This suggests that keyword-based methods tend to overlook papers that may discuss deep learning using different terms or indirect references. Thus, while the keyword-based search offers a simpler and more direct method, it is limited in its scope, whereas the SBERT-based similarity approach provides a more inclusive and context-aware classification, highlighting its superior performance in filtering relevant papers related to deep learning in virology and epidemiology.
+
+### Task 2 Results: Classification into ["text mining", "computer vision", "both", "other"].
+
+**Classification based on SBERT model**
+
+| Method Type      | Count |
+|------------------|-------|
+| other            | 3751  |
+| text mining      | 3085  |
+| Both             | 2502  |
+| computer vision  | 1702  |
+
+![Alt Text](results/Images/Classification_based_on_SBERT_model.png).
+
+**Classification based on Keyword based search**
+
+| Category         | Count |
+|------------------|-------|
+| other            | 9300  |
+| text mining      | 1485  |
+| computer vision  | 447   |
+| both             | 5     |
+
+
+The comparison between the SBERT-based classification and the keyword-based search classification reveals notable differences in how each method categorizes research papers. The SBERT model identifies a more diverse range of approaches, with a significant number of papers (3,751) categorized as "Other," reflecting its ability to capture a wide variety of methods beyond predefined categories such as text mining and computer vision. This is followed by a substantial number of papers classified under text mining (3,085), both text mining and computer vision (2,502), and computer vision (1,702), highlighting the model's capacity to identify multimodal approaches and capture semantic nuances. In contrast, the keyword-based search produces a larger proportion of papers classified as Other (9,300), indicating that the method's reliance on specific keywords leads to a loss of papers discussing relevant methodologies using alternative terminology. It also identifies fewer papers under text mining (1,485) and computer vision (447), suggesting that the search fails to account for variations in terminology or the broader scope of deep learning methods. Furthermore, the small number of papers classified as using both methods (only 5) emphasizes the limitations of keyword-based searches in recognizing multimodal approaches. Overall, the SBERT model provides a more comprehensive and semantically aware classification, while the keyword-based approach tends to miss relevant papers due to its reliance on exact keyword matches.
+
+
+### Task 3 Results: Method used for each relevant paper.
+
+**Classification based on SBERT model**
+
+- **Count of papers belongs to specific methods.**
+
+| Method Used                         | Count |
+|-------------------------------------|-------|
+| text analytics                      | 1,195 |
+| feedforward neural network           | 960   |
+| multimodal neural network            | 935   |
+| pretrained language model            | 756   |
+| natural language processing          | 747   |
+| RNN                                  | 713   |
+| text mining                          | 650   |
+| vision model                         | 624   |
+| LSTM                                 | 498   |
+| image processing                     | 448   |
+| vision transformer                   | 311   |
+| CNN                                  | 305   |
+| sequence-to-sequence models          | 273   |
+| neural net algorithm                 | 266   |
+| long short-term memory network       | 233   |
+| convolutional neural network         | 200   |
+| textual data analysis                | 184   |
+| recurrent neural network             | 183   |
+| generative deep learning             | 160   |
+| vision algorithms                    | 130   |
+| computer graphics and vision         | 128   |
+| computer vision                      | 122   |
+| language modeling                    | 101   |
+| generative AI                        | 100   |
+| multimodal model                     | 100   |
+| foundation model                     | 87    |
+| NLP                                  | 78    |
+| object recognition                   | 61    |
+| generative artificial intelligence   | 57    |
+| continuous diffusion model           | 46    |
+| speech and language technology       | 45    |
+| transformer models                   | 43    |
+| language processing                  | 42    |
+| diffusion-based generative model     | 34    |
+| computational semantics              | 33    |
+| generative models                   
+
+
 
 ---
 

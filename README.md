@@ -63,7 +63,7 @@ The dataset for this study was sourced from the publicly accessible **Virology A
 1. Clone the repository:
 
    ```bash
-   git clone https://gitlab.com/dsohith/Semantic-NLP-Filtering-for-Deep-Learning-Papers-in-Virology_Epidemiology.git
+   git clone https://github.com/dsohith/Semantic-NLP-Filtering-for-Deep-Learning-Papers-in-Virology_Epidemiology.git
    ```
 
 2. Install the required dependencies:

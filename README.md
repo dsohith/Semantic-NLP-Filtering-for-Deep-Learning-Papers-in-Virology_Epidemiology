@@ -32,8 +32,7 @@ The dataset for this study was sourced from the publicly accessible **Virology A
 3. [Literature Review](#literature-review)
 4. [Methodology](#methodology)
 5. [Results and Statistics](#results-and-statistics)
-6. [Contributing](#contributing)
-7. [Contact Information](#contact-information)
+6. [Contact Information](#contact-information)
 
 ---
 

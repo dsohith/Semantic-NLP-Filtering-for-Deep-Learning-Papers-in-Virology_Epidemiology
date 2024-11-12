@@ -32,7 +32,9 @@ The dataset for this study was sourced from the publicly accessible **Virology A
 3. [Literature Review](#literature-review)
 4. [Methodology](#methodology)
 5. [Results and Statistics](#results-and-statistics)
-6. [Contact Information](#contact-information)
+6. [Conclusion](#conclusion)
+7. [Future Scope](#future-scope)
+8. [Contact Information](#contact-information)
 
 ---
 
@@ -311,6 +313,10 @@ The comparison between the SBERT-based classification and the keyword-based sear
 ## Conclusion
 
 This project successfully streamlined the early stages of article collection for review by employing Semantic NLP filtering with the Sentence-BERT (SBERT) model, effectively minimizing the need for manual scanning and filtering of numerous articles. The SBERT-based approach significantly outperformed traditional keyword-based searches by capturing semantic meaning and context, leading to more accurate identification and categorization of papers focused on deep learning applications in virology and epidemiology. The project not only filtered relevant papers but also classified them into key methodological categories such as text mining, computer vision, and both, while accurately extracting the specific deep learning techniques used. This approach provides an efficient and powerful tool for researchers to navigate large datasets with precision and reduced manual effort.
+
+## Future Scope
+
+The future of paper filtering and classification, particularly in specialized fields like virology and epidemiology, lies in the integration of more advanced techniques like zero-shot classification and heuristic methods. Zero-shot learning, driven by large language models (LLMs) such as GPT-4 and T5, could significantly improve the filtering process by classifying papers without prior exposure to labeled data, relying instead on the semantic content of abstracts. This would allow for more accurate identification of relevant papers, even when deep learning methods are discussed indirectly or with unconventional terminology. Additionally, combining semantic filtering with heuristic approaches—such as using publication metadata or domain-specific rules could enhance the accuracy of the filtering system by addressing edge cases where purely semantic methods might fall short. The use of multi-modal models that process both text and visual data, such as figures and graphs, could further enrich the system’s understanding of deep learning applications, particularly in areas like computer vision. Personalized filtering systems, which tailor paper selection based on a researcher’s history or specific interests, could provide more relevant results, while explainable AI methods would ensure transparency by making the decision-making process of the models clearer. Together, these advancements could lead to a more robust, adaptive, and interpretable system for identifying and classifying papers in complex scientific domains, thereby accelerating research and facilitating more informed decision-making.
 
 ---
 

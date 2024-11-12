@@ -39,7 +39,7 @@ The dataset for this study was sourced from the publicly accessible **Virology A
 ## Project Structure
 
 ```bash
-├── data/                  # Contains the dataset (CSV format)
+├── data/                  # Contains the dataset (original data in CSV format and pre processed dataset in pickle format )
 ├── myenv                  # virtual environment and installed librabries
 ├── results                # Output of filtered papers (CSV format) 
    ├── Images/             # classification results with graphs and plots (Images)

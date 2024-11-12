@@ -42,11 +42,14 @@ The dataset for this study was sourced from the publicly accessible **Virology A
 ## Project Structure
 
 ```bash
-├── data/                   # Contains the dataset (CSV format)
-├── notebooks/              # Jupyter notebooks for implemntation
-├── results/                # Output of filtered papers (CSV format) and classification results with graphs and plots (Images)
-├── requirements.txt        # Python dependencies
-└── README.md               # Project documentation (this file)
+├── data/                  # Contains the dataset (CSV format)
+├── myenv                  # virtual environment and installed librabries
+├── results                # Output of filtered papers (CSV format) 
+   ├── Images/             # classification results with graphs and plots (Images)
+  
+├── Semantic NLP Filtering for Deep Learning Papers in Virology_Epidemiology.ipynb              # Jupyter notebook for implemntation
+├── requirements.txt       # Python dependencies
+└── README.md              # Project documentation (this file)
 ```
 
 ---

@@ -3,11 +3,11 @@
 
 ## Project Overview
 
-This project aim to address  filtering academic papers on **virology and epidemiology** that utilize **deep learning techniques**, particularly neural networks, from a large dataset retrieved through keyword-based searches. The problem with traditional keyword-based filtering is that it often returns irrelevant papers that mention but do not substantively apply these techniques. To overcome this, the project uses **Semantic Natural Language Processing (NLP)** techniques, specifically the **Sentence-BERT (SBERT) Transformer model**, to semantically filter and rank papers based on their relevance to deep learning applications in these fields. SBERT generates embeddings to measure the similarity of abstracts, allowing for more accurate identification of relevant papers.
+This project aim to address  filtering research papers on **virology and epidemiology** that utilise **deep learning neural network based solution**, from a large dataset retrieved through keyword-based searches. The problem with traditional keyword-based filtering is that it often returns irrelevant papers that mention but do not substantively apply these techniques. To overcome this, the project uses **Semantic Natural Language Processing (NLP)** techniques, specifically the **Sentence-BERT (SBERT) Transformer model**, to semantically filter and rank papers based on their relevance to deep learning applications in these fields. SBERT generates embeddings to measure the similarity of abstracts, allowing for more accurate identification of relevant papers.
 
 
 ### Key Features:
-- **Semantic Filtering**: Leverages NLP techniques to filter out irrelevant papers that do not utilize deep learning approaches.
+- **Semantic Filtering**: Leverages NLP techniques to filter out irrelevant papers that do not utilise deep learning approaches.
 - **Classification**: Relevant papers are classified into categories based on their method: `["text mining", "computer vision", "both", "other"]`.
 - **Method Extraction**: Automatically extracts and reports the specific deep learning method used in each relevant paper.
 
@@ -29,14 +29,13 @@ The dataset for this study was sourced from the publicly accessible **Virology A
 ## Table of Contents
 1. [Project Structure](#project-structure)
 2. [Installation](#installation)
-3. [Usage](#usage)
-4. [Literature review](#Literature-review)
-5. [Methodology](#methodology)
-6. [Results and Statistics](#results-and-statistics)
-7. [Evaluation](#evaluation)
-8. [Contributing](#contributing)
-9. [License](#license)
-10. [Contact Information](#contact-information)
+3. [Literature review](#Literature-review)
+4. [Methodology](#methodology)
+5. [Results and Statistics](#results-and-statistics)
+6. [Evaluation](#evaluation)
+7. [Contributing](#contributing)
+8. [License](#license)
+9. [Contact Information](#contact-information)
 
 ---
 
@@ -64,8 +63,8 @@ The dataset for this study was sourced from the publicly accessible **Virology A
 1. Clone the repository:
 
    ```bash
-   git clone https://gitlab.com/yourusername/your-repository-name.git
-   cd your-repository-name
+   git clone https://gitlab.com/dsohith/Semantic-NLP-Filtering-for-Deep-Learning-Papers-in-Virology_Epidemiology.git
+   cd dsohith
    ```
 
 2. Install the required dependencies:
@@ -88,7 +87,7 @@ python src/model/semantic_filter.py --input data/cleaned_papers.csv --output res
 
 **Keyword-based Filtering** : Keyword-based searches are widely used for initial paper retrieval but often result in irrelevant records due to their inability to grasp context and semantics. For example, a paper might mention deep learning but may not focus on it as the primary method. This is a limitation that has been noted in several studies (Huang et al., 2015; Jones et al., 2017).
 
-**Semantic Filtering with NLP** : Recent advances in NLP, especially with transformer-based models like BERT, have improved the semantic understanding of text. Sentence-BERT (Reimers & Gurevych, 2019) extends BERT by generating sentence embeddings, making it effective for semantic similarity tasks, such as document filtering. Other approaches, like TF-IDF or Latent Semantic Analysis (LSA), are limited in capturing deep contextual meanings and dependencies between words, making SBERT a superior choice for this task.
+**Semantic Filtering with NLP** : Recent advances in NLP, especially with transformer-based models like BERT, have improved the semantic understanding of text. Sentence-BERT  extends BERT by generating sentence embeddings, making it effective for semantic similarity tasks, such as document filtering (Reimers & Gurevych, 2019). Other approaches, like TF-IDF or Latent Semantic Analysis (LSA), are limited in capturing deep contextual meanings and dependencies between words, making SBERT a superior choice for this task (Blei et al., 2003).
 
 **Other Approaches Considered**:
 
@@ -106,30 +105,79 @@ The project uses Sentence-BERT (SBERT) to generate sentence embeddings for each 
 SBERT captures semantic meaning beyond simple keyword matches. This allows it to filter out irrelevant papers that mention keywords like "deep learning" or "neural networks" without actually focusing on these topics. By encoding sentences as vectors, SBERT ensures that papers with relevant content are retrieved based on contextual similarity, not just word occurrences.
 
 
+**Task 1:  Semantic natural language processing techniques to filter out papers that do not meet
+the criteria of utilizing deep learning approaches in virology/epidemiology.**
 
-### Classification and Method Extraction
+The first task involved filtering research papers to identify those that utilise deep learning techniques within the domains of virology or epidemiology. To achieve this,  a semantic filtering approach using embeddings derived from the abstracts of the papers. The SentenceTransformer model (all-MiniLM-L6-v2), a lightweight transformer-based model renowned for efficiently generating high-quality sentence embeddings is used. This model converts each abstract into a vector representation within a high-dimensional space, capturing the semantic meaning of the text. Subsequently,  deep learning-related keywords  which are derived from search query of data collection process are embedded using the same transformer model. This approach enables to capture the underlying semantics of each keyword in the specific context of deep learning.
 
-The relevant papers are classified into one of four categories:
-1. `Text Mining`
-2. `Computer Vision`
-3. `Both`
-4. `Other`
+The core of  filtering mechanism relied on calculating the cosine similarity between the abstract embeddings and the keyword embeddings. Cosine similarity measures the cosine of the angle between two vectors, yielding a numerical score between -1 and 1, which reflects the degree of similarity between the vectors. A higher similarity score indicates that the abstract is more likely to be related to deep learning methodologies.
 
-For each paper, the specific **deep learning method** (e.g., CNN, RNN, LSTM, etc.) is extracted and reported.
+To determine which papers were relevant, a statistical thresholding method is applied. Specifically,  the mean and standard deviation of the cosine similarity scores for all abstracts are calculated. The papers were then filtered based on their Deep_Learning_similarity_percentage, which was computed as the percentage similarity between the abstract and the deep learning-related keywords. Papers whose similarity score exceeded the threshold of mean - 2*standard deviation were considered relevant and retained in the dataset. This thresholding approach allows to exclude papers with weak or irrelevant connections to deep learning, ensuring that the papers  analysed were more likely to be related to the application of deep learning in virology or epidemiology. This methodology offered an efficient and semantically informed way to filter papers, capturing the nuanced meanings within the abstracts without being restricted to exact keyword matches.
 
----
+
+**Task 2: For the papers deemed relevant, classify them according to the type of method used: ["text
+mining", "computer vision", "both", "other"].**
+
+After identifying the relevant papers, the subsequent task was to classify them according to the method employed, specifically into one of the following categories: "text mining," "computer vision," "both," or "other." The classification process was based on comparing the semantic content of each abstract to predefined embeddings representing the methods of text mining and computer vision. To achieve this, embeddings for each method by encoding brief descriptions or keywords associated with each technique using the same SentenceTransformer model. This approach ensured that the classification was grounded in the semantic essence of the methods, rather than relying on exact keyword matches.
+
+To classify each paper,  the cosine similarity between the paper’s abstract embedding and each of the method embeddings are calculated. This resulted in a similarity score for each method, indicating the degree of alignment between the abstract and the respective method. A higher similarity score signified a closer relationship between the abstract and the method. If both text mining and computer vision methods exhibited similarity scores above a specific threshold, the paper was classified as "both." If only one method had a high similarity score, the paper was assigned to the corresponding category, either "text mining" or "computer vision." Papers that did not show significant similarity to either method were classified as "other." This classification approach allowed for a nuanced distinction between papers, as it took into account the semantic content of the abstract, ensuring that papers employing multiple approaches or less common terminology were accurately categorised.
+
+**Task 3: Extract and report the name of the method used for each relevant paper.**
+
+The third task involved extracting and reporting the specific deep learning method used in each relevant paper. Here, the objective was to identify the exact method from a predefined set of techniques, such as CNN, RNN, Transformer, and other deep learning architectures. The extraction process followed a similar procedure to the classification task but with a focus on pinpointing the method that best matched the abstract. To facilitate this, embeddings for each method, using  keywords that represent each deep learning technique, as had done previously.
+
+For each paper,  the cosine similarity between its abstract embedding and the embeddings for all predefined deep learning methods are computed. The resulting similarity scores reflected the degree of alignment between the abstract and each method. The method with the highest similarity score was identified as the most likely technique used in the paper. In cases where a clear difference in similarity scores existed, the paper was assigned the method that yielded the highest score. This process provided an effective means of identifying the specific deep learning method utilised, even in instances where the method was not explicitly stated by name. It allowed for the accurate extraction of methods based on semantic meaning, ensuring that the classification was not reliant on exact keyword matches, but rather on the actual content of the abstract.
+
+The use of cosine similarity for identifying the deep learning method was particularly advantageous, as it accounted for the diverse and complex language often found in research papers. Rather than depending on rigid keyword matching, which may overlook subtleties or variations in terminology, the use of semantic embeddings enabled us to correctly match papers to their respective deep learning techniques, even when the methods were described differently or indirectly referenced.
+
 
 ## Results and Statistics
 
 ### Dataset Overview:
 - **Initial dataset size**: 11,450 papers
-- **Filtered relevant papers**: X papers (based on deep learning usage)
 
-### Classification Breakdown:
-- `Text Mining`: Y papers
-- `Computer Vision`: Z papers
-- `Both`: N papers
-- `Other`: M papers
+| Column            | Non-Null Count  | Data Type |
+|-------------------|-----------------|-----------|
+| PMID              | 11,450          | int64     |
+| Title             | 11,450          | object    |
+| Authors           | 11,450          | object    |
+| Citation          | 11,450          | object    |
+| First Author      | 11,450          | object    |
+| Journal/Book      | 11,450          | object    |
+| Publication Year  | 11,450          | int64     |
+| Create Date       | 11,450          | object    |
+| PMCID             | 6,450           | object    |
+| NIHMS ID          | 956             | object    |
+| DOI               | 10,969          | object    |
+| Abstract          | 11,237          | object    |
+
+
+
+- **Distribution of Abstract Length**
+
+| Statistic | Value       |
+|-----------|-------------|
+| Count     | 11,237      |
+| Mean      | 1,723.08    |
+| Standard Deviation (std) | 575.94    |
+| Minimum   | 4           |
+| 25%       | 1,386       |
+| Median (50%) | 1,699     |
+| 75%       | 1,983       |
+| Maximum   | 20,492      |
+
+
+### Data Pre processing:
+
+- Initial size: 11450 
+- Missing abstracts: 213
+- Filtered size: 11237
+- Converts text to lowercase
+- Remove special characters
+- Lemmatize words to base form
+- Remove stopwords
+
+  
 
 ### Methods Used:
 - Example methods extracted: **CNN**, **RNN**, **LSTM**, **Transformer**

@@ -81,7 +81,7 @@ The dataset for this study was sourced from the publicly accessible **Virology A
 ## Project Notebook
 
 ```bash
-python src/model/semantic_filter.py --input data/cleaned_papers.csv --output results/filtered_papers.csv
+Semantic_NLP_Filtering_for_Deep_Learning_Papers_in_Virology_Epidemiology.ipynb
 ```
 
 

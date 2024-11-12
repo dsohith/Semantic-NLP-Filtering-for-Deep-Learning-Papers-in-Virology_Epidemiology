@@ -33,8 +33,7 @@ The dataset for this study was sourced from the publicly accessible **Virology A
 4. [Methodology](#methodology)
 5. [Results and Statistics](#results-and-statistics)
 6. [Contributing](#contributing)
-7. [License](#license)
-8. [Contact Information](#contact-information)
+7. [Contact Information](#contact-information)
 
 ---
 
@@ -309,20 +308,6 @@ The comparison between the SBERT-based classification and the keyword-based sear
 ## Conclusion
 
 This project successfully streamlined the early stages of article collection for review by employing Semantic NLP filtering with the Sentence-BERT (SBERT) model, effectively minimizing the need for manual scanning and filtering of numerous articles. The SBERT-based approach significantly outperformed traditional keyword-based searches by capturing semantic meaning and context, leading to more accurate identification and categorization of papers focused on deep learning applications in virology and epidemiology. The project not only filtered relevant papers but also classified them into key methodological categories such as text mining, computer vision, and both, while accurately extracting the specific deep learning techniques used. This approach provides an efficient and powerful tool for researchers to navigate large datasets with precision and reduced manual effort.
-
----
-
-## Contributing
-
-We welcome contributions from the research community. To contribute:
-
-1. Fork the repository.
-2. Create a new branch for your feature (`git checkout -b feature-name`).
-3. Commit your changes (`git commit -m 'Add new feature'`).
-4. Push to your branch (`git push origin feature-name`).
-5. Submit a pull request detailing your changes.
-
-Please ensure that all contributions follow the PEP 8 coding standard and are well-documented.
 
 ---
 
